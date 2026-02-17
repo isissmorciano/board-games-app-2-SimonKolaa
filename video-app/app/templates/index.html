@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Giochi da Tavolo Disponibili</h1>
+
+{% for game in games %}
+
+<article>
+    <header>
+        <h2><a href="{{ url_for('main.game_detail', id=game['id']) }}">{{ game['nome'] }}</a></h2>
+        <small>Categoria: {{ game['categoria'] }} - Max Giocatori: {{ game['numero_giocatori_massimo'] }} - Durata Media: {{ game['durata_media'] }} min</small>
+    </header>
+</article>
+<hr>
+{% endfor %}
+{% endblock %}

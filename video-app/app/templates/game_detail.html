@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Gioco: {{ game['nome'] }}</h1>
+<p>Categoria: {{ game['categoria'] }} - Max Giocatori: {{ game['numero_giocatori_massimo'] }} - Durata Media: {{ game['durata_media'] }} minuti</p>
+
+<h2>Partite Registrate</h2>
+{% if matches %}
+{% for match in matches %}
+<article>
+    <header>
+        <h3>Vincitore: {{ match['vincitore'] }}</h3>
+        <small>Data: {{ match['data'] }} - Punteggio: {{ match['punteggio_vincitore'] }}</small>
+    </header>
+</article>
+<hr>
+{% endfor %}
+{% else %}
+<p>Nessuna partita registrata per questo gioco.</p>
+{% endif %}
+
+<a href="{{ url_for('main.index') }}">Torna ai giochi</a>
+{% endblock %}
